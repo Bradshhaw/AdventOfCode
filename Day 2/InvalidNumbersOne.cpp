@@ -1,4 +1,35 @@
+#include <sstream>
+#include <fstream>
+#include "StringSplitter.h"
+#include <iostream>
 
+using namespace std;
+
+int numDigits(long long number)
+{
+    int digits = 0;
+
+    while(number != 0)
+    {
+        number /= 10;
+        digits++;
+    }
+
+    return digits;
+}
+
+int powerOfTen(long long digits)
+{
+    int power = 10;
+
+
+    for(int ii = 1; ii < digits; ii++)
+    {
+        power *= 10;
+    }
+
+    return power;
+}
 
 int main()
 {
@@ -8,7 +39,48 @@ int main()
     //If it does then grab the number it is, if not then move to next in the range.
     //If the length of the string is not divisible by 2, then it doesn't have an ID.
 
+    ifstream t("input\\input.txt");
+    stringstream buffer;
+    buffer << t.rdbuf();
 
+
+    vector<string> dataIn = split(buffer.str(), " ,");
+    long long total = 0;
+
+    long long firstNum;
+    long long secondNum;
+    long long firstHalf;
+    long long secondHalf;
+    long long ii;
+
+    for(int i = 0; i < dataIn.size(); i++)
+    {
+        vector<string> splitNumbers = split(dataIn[i], "-");
+
+        firstNum = stoll(splitNumbers[0]);
+        secondNum = stoll(splitNumbers[1]);
+
+        //cout << firstNum << "-" << secondNum << "\n";
+
+        for(ii = firstNum; ii <= secondNum; ii++)
+        {
+            //cout << ii << "\n";
+            if(numDigits(ii) % 2 == 0)
+            {
+                firstHalf = ii / (powerOfTen(numDigits(ii)/2));
+                secondHalf = ii % (powerOfTen(numDigits(ii)/2));
+
+                if(firstHalf == secondHalf)
+                {
+                    total += ii;
+                    cout << ii << "\n";
+                }
+            }
+        }
+
+    }
+
+    cout << "\n\n" << total << "\n";
 
     return 0;
 }

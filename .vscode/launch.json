@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Code/AdventOfCode/Day 1",
-      "program": "d:/Code/AdventOfCode/Day 1/build/Debug/outDebug",
+      "cwd": "c:/Code/AdventOfCode/Day 2",
+      "program": "c:/Code/AdventOfCode/Day 2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
