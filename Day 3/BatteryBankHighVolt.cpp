@@ -58,13 +58,7 @@ int main()
     ifstream file("input\\input.txt");
 
     long long total = 0;
-    int highestNum = 0;
-    int highestPos = 0;
-    int secondHighest = 0;
-    int secondPos = 0;
-    int digit = 0;
     int position = 0;
-    bool stop = false;
 
     //Go through list and fill a map which has position and value
     //Then sort by value
